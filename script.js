@@ -1,18 +1,20 @@
 // window.onload = function () {
-    const options = {
-        method: 'GET',
-        headers: {
-          accept: 'application/json',
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjNjVhYmQ5NzM0MTg2MGM4NGY4MWJkY2MyODc3ZWI3MCIsInN1YiI6IjY1OTZjODNjYTZjMTA0MTA3MWZhN2ZjOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.vM2Ir1-W9kQ9t3KVPZYr2n1pb8ebXrrF3HoIUucgDqs'
-        }
-      };
+const options = {
+    method: 'GET',
+    headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjNjVhYmQ5NzM0MTg2MGM4NGY4MWJkY2MyODc3ZWI3MCIsInN1YiI6IjY1OTZjODNjYTZjMTA0MTA3MWZhN2ZjOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.vM2Ir1-W9kQ9t3KVPZYr2n1pb8ebXrrF3HoIUucgDqs'
+    }
+};
 
-    fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", options)
+fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", options)
     .then(response => response.json())
     .then(data => {
         let movie_data = data["results"];
 
         
+
+
         movie_data.forEach(movie_list => {
 
             let movie_poster = movie_list["poster_path"];
@@ -40,25 +42,18 @@
             </div>
             </article>
             `
-            let poster_card = document.querySelectorAll(".card_id")
-            poster_card.forEach((poster_card) => {
-                poster_card.addEventListener('click', (event) => {
-                    // poster_card.classList.add('active')
+            // let poster_card = document.querySelectorAll(".card_id")
+            // poster_card.forEach((poster_card) => {
+            divBox.addEventListener('click', (event) => {
+                // poster_card.classList.add('active')
 
-                    console.log(poster_card.dataset.id)
-                    // return false;
-                    throw new Error("stop loop")
-                })
+                alert(event.currentTarget.dataset.id)
+                // return false;
+                // throw new Error("stop loop")
             })
+            // })
 
-            
-        })
-        // .catch(err => console.error(err));
+         })
+        //  .catch(err => console.error(err));
     })
 // }
-
-
-
-
-
-
