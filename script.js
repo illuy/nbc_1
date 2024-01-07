@@ -11,10 +11,11 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", opti
     .then(response => response.json())
     .then(data => {
         let movie_data = data["results"];
+        // -----------------------------------------------------------------------------
 
-        
 
 
+        // -----------------------------------------------------------------------------
         movie_data.forEach(movie_list => {
 
             let movie_poster = movie_list["poster_path"];
@@ -31,6 +32,8 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", opti
             divBox.setAttribute("class", "card_id");
             divBox.setAttribute("data-Id", movie_id);
 
+            const btn = document.querySelector("button")
+
             divBox.innerHTML = `
             <article>
             <img src="https://image.tmdb.org/t/p/w500/${movie_poster}" alt="">
@@ -38,7 +41,6 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", opti
                 <h3>${movie_title}</h3> 
                 <p>${movie_detail}</p> 
                 <span>${movie_rating}</span> 
-                <span>${movie_id}</span> 
             </div>
             </article>
             `
@@ -52,8 +54,16 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", opti
                 // throw new Error("stop loop")
             })
             // })
+            btn.addEventListener('click', (e) => {
+                e.preventDefault()
+                let movie_search = document.getElementById("#search").value;
+                alert(movie_search)
+            })
 
-         })
+    
+        })
         //  .catch(err => console.error(err));
+
+
     })
 // }

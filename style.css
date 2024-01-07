@@ -74,21 +74,21 @@ header .movie_search button {
 header .movie_search button span {
     /* font-weight: 800; */
     letter-spacing: 2px;
-    background: articlenear-gradient(90deg, #63cae9 0%, #792cdf 100%);
-    -webkit-background-carticlep: text;
+    background: linear-gradient(90deg, #63cae9 0%, #792cdf 100%);
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: 0.3s;
 }
 
 header .movie_search button:hover {
     transition: 0.3s;
-    background: articlenear-gradient(90deg, #63cae9 0%, #792cdf 100%);
+    background: linear-gradient(90deg, #63cae9 0%, #792cdf 100%);
     cursor: pointer;
 }
 
 header .movie_search button:hover span {
     background: #2E2E2E;
-    -webkit-background-carticlep: text;
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: 0.3s;
 }

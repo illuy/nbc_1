@@ -8,3 +8,9 @@
 //         alert(e.target.dataset.id)
 //     })
 // })
+function printName()  {
+    event.preventDefault;
+    const name = document.getElementById('name').value;
+    document.getElementById("result").innerText = name;
+
+  }
