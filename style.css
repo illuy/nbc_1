@@ -1,0 +1,205 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #212121;
+    color: #fff;
+}
+
+/* ------------------------------------------------------------- */
+
+main {
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+header {
+    /* border:1px solid red; */
+    text-align: center;
+    padding: 30px;
+    width: 100%;
+}
+
+header h2 {
+    margin-bottom: 20px;
+    /* width: 100%; */
+}
+
+header .movie_search {
+    width: 60%;
+    min-width: 400px;
+}
+
+header .movie_search input {
+    background-color: #2E2E2E;
+    border-radius: 10px 0 0 10px;
+    border: none;
+    display: block;
+    padding: 10px;
+    padding-left: 16px;
+    color: white;
+    font-size: 16px;
+    width: 50%
+} 
+
+input::placeholder {
+    color: rgb(184, 184, 184);
+}
+
+header .movie_search input:focus {
+    outline: none;
+}
+
+header .movie_search {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+header .movie_search button {
+    font-size: 16px;
+    padding: 5px 15px;
+    border: transparent;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.3);
+    background: #2E2E2E;
+    border-radius: 0 10px 10px 0;
+    transition: 0.3s;
+}
+
+header .movie_search button span {
+    /* font-weight: 800; */
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #63cae9 0%, #792cdf 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: 0.3s;
+}
+
+header .movie_search button:hover {
+    transition: 0.3s;
+    background: linear-gradient(90deg, #63cae9 0%, #792cdf 100%);
+    cursor: pointer;
+}
+
+header .movie_search button:hover span {
+    background: #2E2E2E;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: 0.3s;
+}
+
+/* ------------------------------------------------------------- */
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 30px;
+}
+
+li {
+    list-style: none;
+    margin: 10px 20px 20px 20px;
+    width: calc((100% - 120px) / 3);
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 20px;
+    background: #212121;
+    transition: 0.1s;
+    box-shadow: 10px 10px 30px rgb(25, 25, 25), -10px -10px 43px rgb(50, 50, 50);
+
+}
+
+li div {
+    display: flex;
+    flex-direction: column;
+}
+
+li img {
+    border-radius: 10px;
+    display: block;
+    width: 30%;
+    /* margin-bottom:20px; */
+    margin-right: 20px;
+}
+
+li h3 {
+    margin-bottom: 20px;
+
+}
+
+li p {
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+li span {
+    margin-top: auto;
+    color: #fcf59e
+}
+
+ul li:hover {
+    transform: scale(1.05, 1.05);
+}
+
+/* ------------------------------------------------------------- */
+
+@media all and (max-width: 1680px) {
+    li {
+        margin: 10px 10px 20px 10px;
+        width: calc((100% - 40px) / 2);
+    }
+}
+
+@media all and (max-width: 1280px) {
+    header{
+        padding:15px;
+    }
+        
+    header .movie_search input{
+        width: 70%;
+    }
+
+    ul{
+        flex-direction: column;
+        padding:10px;
+        justify-content: center;
+    }
+    li{
+        /* flex-direction: column; */
+        margin: 10px;
+        width: 90%;
+    }
+    
+}
+@media all and (max-width: 768px) {
+
+    header .movie_search{
+        width: 100%;
+        min-width: auto;
+    }
+    header .movie_search input{
+        width: 80%;
+    }
+  li{
+        flex-direction: column;
+        margin: 0 0 10px 0;
+        width: 100%;
+    }
+    li img{
+        width: 100%;
+    }
+}

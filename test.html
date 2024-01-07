@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 배열에서 특정 값 찾기 -->
+    <!-- <div>
+        배열 : <span id="nums"></span>
+    </div>
+
+    <input type="text" class="search-text">
+    <button id="btn">123</button>
+
+    <div>
+        결과 : <span id="result"></span>
+    </div>
+    <script>
+        let nums = [1,2,3,4,5];
+        document.getElementById('nums').innerHTML = nums;
+
+        function search(){
+            let text = document.getElementsByClassName('search-text')[0].value;
+            text = parseInt(text);
+            
+            let res = nums.find((element)=>{
+                return element === text;
+            });
+            document.getElementById('result').innerText = res;
+            
+        }
+        document.getElementById('btn').addEventListener('click',search)
+    </script> -->
+
+<!-- 객체에서 특정 값 찾기 -->
+
+    <!-- <div>
+        학생:
+        <span id="students">
+            <li></li>
+            <li></li>
+            <li></li>
+        </span>
+    </div>
+    <br />
+
+    <input type="text" class="search-text" />
+    <button id="btn">Search</button>
+    <br />
+    <br />
+
+    <div>
+        결과 :
+        <span id="result"></span>
+    </div>
+
+
+    <script>
+        // 학생 객체 배열
+        let students = [
+            { id: 1, name: "나혜석" },
+            { id: 2, name: "허난설헌" },
+            { id: 3, name: "김명순" },
+        ];
+    
+        // li에 데이터 출력
+        for (let i = 0; i < students.length; i++) {
+            document.querySelectorAll("#students li")[i].innerText = students[i].name;
+        }
+    
+        // search 버튼 클릭 시 호출되는 함수
+        function search() {
+            // 폼에 입력된 값
+            let text = document.getElementsByClassName("search-text")[0].value;
+            text = parseInt(text); // id 를 사용할 것이기 때문에 숫자로 변경
+    
+            // find() 메소드를 사용하여 값 찾기
+            let res = students.find((element) => {
+                return element.id === text;
+            });
+    
+            // 예외 처리
+            if (res !== undefined) {
+                document.getElementById("result").innerText = res.name;
+            } else {
+                document.getElementById("result").innerText = "찾을 수 없습니다.";
+            }
+        }
+    
+        // 클릭 시 search 함수 호출
+        document.getElementById("btn").addEventListener("click", search);
+    </script> -->
+
+
+    <!-- 객체에서 특정 값 검색 하기 -->
+
+    <div>
+        학생:
+        <span id="students">
+            <li>
+                <span class="id"></span> | <span class="name"></span> |
+                <span class="favorites"></span>
+            </li>
+            <li>
+                <span class="id"></span> | <span class="name"></span> |
+                <span class="favorites"></span>
+            </li>
+            <li>
+                <span class="id"></span> | <span class="name"></span> |
+                <span class="favorites"></span>
+            </li>
+        </span>
+    </div>
+    <br />
+
+    <select id="search-select">
+        <option value="id">id</option>
+        <option value="name">name</option>
+        <option value="favorites">favorites</option>
+    </select>
+    <input type="text" class="search-text" />
+    <button id="btn">Search</button>
+    <br />
+    <br />
+
+    <div>
+        결과:
+        <span id="result"></span>
+    </div>
+
+    <script>
+        // 학생 객체 배열
+        let students = [
+            { id: "1001", name: "나혜석", favorites: "시" },
+            { id: "1002", name: "허난설헌", favorites: "시" },
+            { id: "1003", name: "김명순", favorites: "소설" },
+        ];
+
+        // li에 데이터 출력
+        for (let i = 0; i < students.length; i++) {
+            document.querySelectorAll("#students li .id")[i].innerText = students[i].id;
+            document.querySelectorAll("#students li .name")[i].innerText = students[i].name;
+            document.querySelectorAll("#students li .favorites")[i].innerText =
+                students[i].favorites;
+        }
+
+        function searchFilter(data, type, search) {
+            // data 값을 하나하나 꺼내와서
+            return data.map((d) => {
+                // 만약 해당 데이터가 search 값을 가지고 있다면 리턴한다.
+                if (d[type].includes(search)) {
+                    return d;
+                }
+            });
+        }
+
+        // search 버튼 클릭 시 호출되는 함수
+        function search() {
+            // 폼에 입력된 값
+            let sel = document.getElementById("search-select").value;
+            let text = document.getElementsByClassName("search-text")[0].value;
+
+            // res [undefined, {id:, name: favorites:}, undefined] 이런식으로 리턴
+            // 따라서 undefined 값을 제거해줘야하기 때문에 filter 메소드 적용
+            let res = searchFilter(students, sel, text).filter((d) => d !== undefined);
+
+            // 결과 값 화면 출력
+            document.getElementById("result").innerText = res.map((d) => d.name);
+        }
+
+        // 클릭 시 search 함수 호출
+        document.getElementById("btn").addEventListener("click", search);
+    </script>
+</body>
+
+</html>
