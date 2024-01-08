@@ -38,7 +38,7 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", opti
             // -----------------------------------------------
 
             divBox.innerHTML = `
-            <article>
+            <article data-id="${movie_id}">
             <img src="https://image.tmdb.org/t/p/w500/${movie_poster}" alt="">
             <div>
                 <h3>${movie_title}</h3> 
@@ -47,10 +47,12 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", opti
             </div>
             </article>
             `
-
+            
             // alert 띄우기 
             // let poster_card = document.querySelectorAll(".card_id")
-            // .card_id 계속 찾을수 없다고 나옴....
+            // .card_id 계속 찾을수 없다고 나옴.... 
+            // console.log(poster_card)
+            // 알고보니 배열로 나온다... 그래서 addEventListener 안됨;;; 
             divBox.addEventListener('click', (event) => {
                 // poster_card.classList.add('active')
                 alert("선택하신 영화의 ID : " + event.currentTarget.dataset.id)
@@ -77,31 +79,20 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", opti
             //잘안됨... 망했다.
             //내멋대로 만들어보는중 - - - - - 
             let search_results = function () {
-                let sel = input_text.value;
-                console.log(sel)
-                // let title_search = movie_title.find()
+                let sel2 = input_text.value.toLowerCase()
+                let results_title = movie_title.toLowerCase()   
 
-                if (sel === movie_title) {
+                if (results_title.includes(sel2)) {
                     console.log("ok")
-
+                    divBox.style.display = "block";
                 } else {
                     console.log("no")
-
-                    divBox.innerHTML = `
-                    <article style="display:none">
-                    <div>
-                        찾을수 없습니다.
-                    </div>
-                    </article>
-                    `
+                    divBox.style.display = "none";
                 }
-
             }
 
         })
         //  .catch(err => console.error(err));
-
-
     })
 // }
 
