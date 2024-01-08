@@ -11,11 +11,6 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", opti
     .then(response => response.json())
     .then(data => {
         let movie_data = data["results"];
-        // -----------------------------------------------------------------------------
-
-
-
-        // -----------------------------------------------------------------------------
         movie_data.forEach(movie_list => {
 
             let movie_poster = movie_list["poster_path"];
@@ -23,6 +18,8 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", opti
             let movie_detail = movie_list["overview"];
             let movie_rating = movie_list["vote_average"];
             let movie_id = movie_list["id"];
+
+
 
             const newLi = document.createElement("li")
 
@@ -32,7 +29,7 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", opti
             divBox.setAttribute("class", "card_id");
             divBox.setAttribute("data-Id", movie_id);
 
-            const btn = document.querySelector("button")
+
 
             divBox.innerHTML = `
             <article>
@@ -49,21 +46,43 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", opti
             divBox.addEventListener('click', (event) => {
                 // poster_card.classList.add('active')
 
-                alert("선택하신 영화의 ID : "+event.currentTarget.dataset.id)
+                alert("선택하신 영화의 ID : " + event.currentTarget.dataset.id)
                 // return false;
                 // throw new Error("stop loop")
             })
             // })
-            btn.addEventListener('click', (e) => {
-                e.preventDefault()
-                let movie_search = document.getElementById("#search").value;
-                alert(movie_search)
-            })
 
+            let input_text = document.getElementById("search");
+            input_text.addEventListener("keydown", function (e) {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    search_results();
+                }
+            });
+
+            let  search_results = function(){
+                let sel = input_text.value;
+                console.log(sel)
+                if(sel === movie_title ){
+                    console.log("ok")
+                    
+                }else{
+                    console.log("no")
+                    divBox.innerHTML = `
+                    <article style="display:none">
+                    <div>
+                        찾을수 없습니다.
+                    </div>
+                    </article>
+                    `
+                }
     
+            }
+
         })
         //  .catch(err => console.error(err));
 
 
     })
 // }
+

@@ -111,16 +111,18 @@ ul {
 li{
     width: calc((100% - 120px) / 3);
     cursor: pointer;   
-    padding: 20px;
+
     margin:20px;
-    border-radius: 20px;
-    background: #212121;
-    transition: 0.1s;
-    box-shadow: 10px 10px 30px rgb(25, 25, 25), -10px -10px 43px rgb(50, 50, 50);
+
 }
 
 article {
     display: flex;
+    padding: 20px;
+    border-radius: 20px;
+    background: #212121;
+    transition: 0.1s;
+    box-shadow: 10px 10px 30px rgb(25, 25, 25), -10px -10px 43px rgb(50, 50, 50);
 }
 
 article div {
