@@ -40,7 +40,7 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", opti
             <div>
                 <h3>${movie_title}</h3> 
                 <p>${movie_detail}</p> 
-                <span>${movie_rating}</span> 
+                <span>평점 : ${movie_rating}</span> 
             </div>
             </article>
             `
