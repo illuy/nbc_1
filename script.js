@@ -25,15 +25,12 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", opti
             const divBox = temp.appendChild(newLi)
 
             // input 보기요소 목록만들기
-            // const in_option = document.createElement("datalist")
             const datalist = document.getElementById("movie")
             const sel = document.createElement("option")
             const sel_op = datalist.appendChild(sel)
 
             sel_op.setAttribute("value", movie_title)
-
-
-            // 
+            // -----------------------------------------------
 
             divBox.setAttribute("class", "card_id");
             divBox.setAttribute("data-Id", movie_id);
