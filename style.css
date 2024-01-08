@@ -18,12 +18,10 @@ body {
     top:30px;
   }
   
-  /* Hide default HTML checkbox */
   input#switch {
     display: none;
   }
   
-  /* The slider */
   .slider {
     position: absolute;
     cursor: pointer;
@@ -32,7 +30,7 @@ body {
     right: 0;
     bottom: 0;
     background-color: rgb(4, 2, 29);
-    transition: .4s;
+    transition: 0.4s;
     border-radius: 30px;
   }
   
@@ -73,9 +71,12 @@ body {
   }
   
   input:checked ~ label .slider::after {
-    left: 80%;
-    width: 0px;
-    height: 0px;
+    /* width: 10px;
+    height: 10px;
+    top:30%;
+    left: 55%;
+    background-color:#ae6000 */
+    width: 0;height: 0;
   }
   input:checked ~ #wrap{
     background-color: #e0e0e0;
