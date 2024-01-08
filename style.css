@@ -5,9 +5,101 @@
 }
 
 body {
-    background-color: #212121;
-    color: #fff;
+  
 }
+/* ------------------------------------------------------------- */
+
+.switch {
+    font-size: 17px;
+    position: absolute;
+    width: 3.5em;
+    height: 2em;
+    right:30px;
+    top:30px;
+  }
+  
+  /* Hide default HTML checkbox */
+  input#switch {
+    display: none;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(4, 2, 29);
+    transition: .4s;
+    border-radius: 30px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 1.4em;
+    width: 1.4em;
+    border-radius: 20px;
+    left: 0.3em;
+    bottom: 0.3em;
+    background-color: rgb(253, 167, 6);
+    transition: .4s;
+  }
+  
+  input:checked ~ label .slider {
+    background-color: rgb(4, 2, 29);
+  }
+  
+  input:focus ~ label .slider {
+    box-shadow: 0 0 1px rgb(4, 2, 29);
+  }
+  
+  input:checked ~ label .slider:before {
+    transform: translateX(25px);
+  }
+  
+  .slider::after {
+    width: 20px;
+    height: 20px;
+    left: 20%;
+    top: 10%;
+    border-radius: 50%;
+    position: absolute;
+    content: "";
+    background-color: rgb(4, 2, 29);
+    transition: 0.4s;
+  }
+  
+  input:checked ~ label .slider::after {
+    left: 80%;
+    width: 0px;
+    height: 0px;
+  }
+  input:checked ~ #wrap{
+    background-color: #e0e0e0;
+    color: #212121
+  }
+  input:checked ~ #wrap header .movie_search input{
+    background-color:#e0e0e0;
+    color:#212121;
+    border: 2px solid #212121;
+  }
+
+  input:checked ~ #wrap .main article {
+    background-color: #e0e0e0;
+    box-shadow: 10px 10px 8px rgb(209, 209, 209), -10px -10px 18px rgb(243, 243, 243);
+}
+
+input:checked ~ #wrap .main article p {
+    color: #404040;
+}
+
+input:checked ~ #wrap .main article span {
+    color: #9d1337;
+}
+
 
 /* ------------------------------------------------------------- */
 
@@ -15,6 +107,8 @@ body {
     width: 100%;
     overflow: hidden;
     margin: 0 auto;
+    background-color: #212121;
+    color: #fff;
 }
 
 header {
@@ -206,5 +300,6 @@ section.main {
 
     .main li img {
         width: 100%;
+        margin-bottom:20px;
     }
 }
