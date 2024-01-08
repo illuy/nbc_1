@@ -49,7 +49,7 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", opti
             divBox.addEventListener('click', (event) => {
                 // poster_card.classList.add('active')
 
-                alert(event.currentTarget.dataset.id)
+                alert("선택하신 영화의 ID : "+event.currentTarget.dataset.id)
                 // return false;
                 // throw new Error("stop loop")
             })
