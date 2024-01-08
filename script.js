@@ -1,4 +1,3 @@
-// window.onload = function () {
 const options = {
     method: 'GET',
     headers: {
@@ -10,15 +9,15 @@ const options = {
 fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", options)
     .then(response => response.json())
     .then(data => {
-        let movie_data = data["results"];
-        movie_data.forEach(movie_list => {
+        let movieData = data["results"];
+        movieData.forEach(movieList => {
 
             // api 받은값 활용하기
-            let movie_poster = movie_list["poster_path"];
-            let movie_title = movie_list["original_title"];
-            let movie_detail = movie_list["overview"];
-            let movie_rating = movie_list["vote_average"];
-            let movie_id = movie_list["id"];
+            let moviePoster = movieList["poster_path"];
+            let movieTitle = movieList["original_title"];
+            let movieDetail = movieList["overview"];
+            let movieRating = movieList["vote_average"];
+            let movieId = movieList["id"];
 
             // ul 안에 li 만들어서 id값 alert에 띄우기위해 data-id 추가하기
             const newLi = document.createElement("li")
@@ -27,27 +26,27 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", opti
             const divBox = temp.appendChild(newLi)
 
             divBox.setAttribute("class", "card_id");
-            divBox.setAttribute("data-Id", movie_id);
+            divBox.setAttribute("data-Id", movieId);
 
             // input 보기요소 목록만들기
             const datalist = document.getElementById("movie")
             const sel = document.createElement("option")
             const sel_op = datalist.appendChild(sel)
 
-            sel_op.setAttribute("value", movie_title)
+            sel_op.setAttribute("value", movieTitle)
             // -----------------------------------------------
 
             divBox.innerHTML = `
-            <article data-id="${movie_id}">
-            <img src="https://image.tmdb.org/t/p/w500/${movie_poster}" alt="">
+            <article>
+            <img src="https://image.tmdb.org/t/p/w500/${moviePoster}" alt="">
             <div>
-                <h3>${movie_title}</h3> 
-                <p>${movie_detail}</p> 
-                <span>평점 : ${movie_rating}</span> 
+                <h3>${movieTitle}</h3> 
+                <p>${movieDetail}</p> 
+                <span>Rating : ${movieRating}</span> 
             </div>
             </article>
             `
-            
+
             // alert 띄우기 
             // let poster_card = document.querySelectorAll(".card_id")
             // .card_id 계속 찾을수 없다고 나옴.... 
@@ -60,11 +59,11 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", opti
 
             // 검색기능 만들기 
             //enter
-            let input_text = document.getElementById("search");
-            input_text.addEventListener("keydown", function (e) {
+            let inputText = document.getElementById("search");
+            inputText.addEventListener("keydown", function (e) {
                 if (e.key === "Enter") {
                     e.preventDefault();
-                    search_results();
+                    searchResults();
                 }
             });
 
@@ -72,27 +71,27 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", opti
             const search_btn = document.getElementById("btn");
             search_btn.addEventListener("click", function (e) {
                 e.preventDefault();
-                search_results()
+                searchResults()
             });
 
             // enter or btn 눌렀을때 결과값 가져오기
             //잘안됨... 망했다.
             //내멋대로 만들어보는중 - - - - - 
-            let search_results = function () {
-                let sel2 = input_text.value.toLowerCase()
-                let results_title = movie_title.toLowerCase()   
+            let searchResults = function () {
+                let inputResults = inputText.value.toLowerCase()
+                let resultsTitle = movieTitle.toLowerCase()
 
-                if (results_title.includes(sel2)) {
+                if (resultsTitle.includes(inputResults)) {
                     console.log("ok")
                     divBox.style.display = "block";
                 } else {
                     console.log("no")
                     divBox.style.display = "none";
+
                 }
             }
-
         })
         //  .catch(err => console.error(err));
     })
-// }
+
 
