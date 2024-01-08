@@ -73,7 +73,6 @@ header .movie_search button {
 
 header .movie_search button span {
     /* font-weight: 800; */
-    letter-spacing: 2px;
     background: linear-gradient(90deg, #63cae9 0%, #792cdf 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -151,7 +150,7 @@ article p {
 
 article span {
     margin-top: auto;
-    color: #fcf59e
+    color: #fcf59e;
 }
 
 ul li:hover {

@@ -19,12 +19,21 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", opti
             let movie_rating = movie_list["vote_average"];
             let movie_id = movie_list["id"];
 
-
-
             const newLi = document.createElement("li")
 
             const temp = document.querySelector(".movie_cards");
             const divBox = temp.appendChild(newLi)
+
+            // input 보기요소 목록만들기
+            // const in_option = document.createElement("datalist")
+            const datalist = document.getElementById("movie")
+            const sel = document.createElement("option")
+            const sel_op = datalist.appendChild(sel)
+
+            sel_op.setAttribute("value", movie_title)
+
+
+            // 
 
             divBox.setAttribute("class", "card_id");
             divBox.setAttribute("data-Id", movie_id);
@@ -60,14 +69,22 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", opti
                 }
             });
 
-            let  search_results = function(){
+            const search_btn = document.getElementById("btn");
+            search_btn.addEventListener("click",function(e){
+                e.preventDefault();
+                search_results()
+            });
+
+            let search_results = function () {
                 let sel = input_text.value;
                 console.log(sel)
-                if(sel === movie_title ){
+                // let title_search = movie_title.find()
+                if (sel === movie_title) {
                     console.log("ok")
                     
-                }else{
+                } else {
                     console.log("no")
+
                     divBox.innerHTML = `
                     <article style="display:none">
                     <div>
@@ -76,7 +93,7 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", opti
                     </article>
                     `
                 }
-    
+
             }
 
         })
