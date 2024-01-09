@@ -1,3 +1,12 @@
+let switchBtn = document.getElementById('switch')
+switchBtn.addEventListener('click', (e) => {
+    if (e.target.checked) {
+        document.body.style.backgroundColor = "#e0e0e0"
+    } else {
+        document.body.style.backgroundColor = '#212121'
+    }
+})
+
 const options = {
     method: 'GET',
     headers: {
@@ -87,7 +96,6 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", opti
                 } else {
                     console.log("no")
                     divBox.style.display = "none";
-
                 }
             }
         })
