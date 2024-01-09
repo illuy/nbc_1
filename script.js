@@ -30,7 +30,6 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", opti
 
             // ul 안에 li 만들어서 id값 alert에 띄우기위해 data-id 추가하기
             const newLi = document.createElement("li")
-
             const temp = document.querySelector(".movie_cards");
             const divBox = temp.appendChild(newLi)
 
@@ -62,7 +61,6 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", opti
             // console.log(poster_card)
             // 알고보니 배열로 나온다... 그래서 addEventListener 안됨;;; 
             divBox.addEventListener('click', (event) => {
-                // poster_card.classList.add('active')
                 alert("선택하신 영화의 ID : " + event.currentTarget.dataset.id)
             })
 
@@ -84,8 +82,6 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", opti
             });
 
             // enter or btn 눌렀을때 결과값 가져오기
-            //잘안됨... 망했다.
-            //내멋대로 만들어보는중 - - - - - 
             let searchResults = function () {
                 let inputResults = inputText.value.toLowerCase()
                 let resultsTitle = movieTitle.toLowerCase()
@@ -99,7 +95,6 @@ fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", opti
                 }
             }
         })
-        //  .catch(err => console.error(err));
     })
 
 
