@@ -134,6 +134,9 @@ input:checked~#wrap footer{
     overflow: hidden;
     margin: 0 auto;
     color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* header ------------------------------------------------------------- */
@@ -285,6 +288,8 @@ footer{
     background-color: #151515;
     padding:10px;
     font-size: 14px;
+    width: 100%;
+   margin-top:auto;
 }
 
 /* media ------------------------------------------------------------- */
