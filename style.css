@@ -124,7 +124,10 @@ input:checked~#wrap header .movie_search button {
 input:checked~#wrap header .movie_search button:hover {
     background: linear-gradient(90deg, #63cae9 0%, #792cdf 100%);
 }
-
+input:checked~#wrap footer{
+    background-color: rgb(209, 209, 209);
+    color:#404040;
+}
 /* warp ------------------------------------------------------------- */
 #wrap {
     width: 100%;
