@@ -31,7 +31,7 @@
                     </form>
                 </article>
                 <article id="reviewOutput" class="review_output">
- 
+
                 </article>
             </div>
         </section>
@@ -84,8 +84,12 @@
             });
 
 
-            window.onload = function () {
-            loadReviews();
+        window.onload = function () {
+            // URL에서 영화 ID 읽기
+            const urlParams = new URLSearchParams(window.location.search);
+            const movieId = urlParams.get('id');
+
+            loadReviews(movieId);
 
             document.addEventListener("click", function (e) {
                 if (e.target && e.target.id == "removeBtn") {
@@ -128,6 +132,10 @@
         document.getElementById("writeBtn").addEventListener("click", function (e) {
             e.preventDefault();
 
+            // detailPage.html에서 URL 매개변수 읽기
+            const urlParams = new URLSearchParams(window.location.search);
+            const movieId = urlParams.get('id');
+
             const inputName = document.getElementById("userName").value;
             const inputPass = document.getElementById("password").value;
             const inputReview = document.getElementById("reviewWrite").value;
@@ -136,6 +144,7 @@
             if (validateInput(inputName, inputPass, inputReview)) {
                 // 유효한 경우에만 리뷰 추가
                 let newReview = {
+                    movieId: movieId, // 영화 ID 추가
                     user: inputName,
                     password: inputPass,
                     userReview: inputReview,
@@ -147,7 +156,8 @@
 
                 localStorage.setItem('inputReview', JSON.stringify(reviews));
 
-                loadReviews();
+                // 리뷰 작성 후 바로바로 업데이트
+                loadReviews(movieId);
 
                 document.getElementById('reviewForm').reset();
             }
@@ -182,27 +192,29 @@
             }
         }
 
-        function loadReviews() {
+        function loadReviews(movieId) {
             let reviewList = document.getElementById('reviewOutput');
             reviewList.innerHTML = '';
 
             let reviews = getReviews();
 
-            for (let i = 0; i < reviews.length; i++) {
-                let review = reviews[i];
+            // 특정 영화 ID에 해당하는 리뷰만 필터링
+            let filteredReviews = reviews.filter(review => review.movieId == movieId);
 
-                let newReviewWrite = document.createElement("div")
+            for (let i = 0; i < filteredReviews.length; i++) {
+                let review = filteredReviews[i];
+
+                let newReviewWrite = document.createElement("div");
                 let temp = document.querySelector(".review_output");
-                let divReviewBox = temp.appendChild(newReviewWrite)
+                let divReviewBox = temp.appendChild(newReviewWrite);
                 divReviewBox.setAttribute("class", "review_box");
                 divReviewBox.innerHTML = `
-                    <p class="output_Name">${review.user}</p>
-                    <p class="output_Review">${review.userReview}</p>
-                    <button id="removeBtn">삭제</button>
-                `
+            <p class="output_Name">${review.user}</p>
+            <p class="output_Review">${review.userReview}</p>
+            <button id="removeBtn">삭제</button>
+        `;
                 reviewList.appendChild(divReviewBox);
             }
-
         }
         function removeReview(userName) {
             let reviews = getReviews();
