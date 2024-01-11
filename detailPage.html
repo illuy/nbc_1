@@ -84,24 +84,46 @@
             });
 
 
-        window.onload = function () {
+            window.onload = function () {
             loadReviews();
 
             document.addEventListener("click", function (e) {
                 if (e.target && e.target.id == "removeBtn") {
                     e.preventDefault();
+
                     // 클릭된 삭제 버튼의 부모 요소인 review_box를 찾음
                     const reviewBox = e.target.closest(".review_box");
 
-                    // review_box에서 user 정보를 가져와 해당 리뷰를 삭제
+                    // 리뷰 정보 가져오기
                     const userName = reviewBox.querySelector(".output_Name").textContent;
-                    removeReview(userName);
+                    const userPassword = prompt("리뷰를 삭제하려면 비밀번호를 입력하세요.");
 
-                    // 삭제 후 리뷰 다시 로드
-                    loadReviews();
+                    // 비밀번호 확인
+                    if (validatePassword(userName, userPassword)) {
+                        // 리뷰 삭제
+                        removeReview(userName);
+                        // 삭제 후 리뷰 다시 로드
+                        loadReviews();
+                    } else {
+                        alert("비밀번호가 일치하지 않습니다.");
+                    }
                 }
             });
         };
+
+        function validatePassword(userName, password) {
+            let reviews = getReviews();
+            // userName에 해당하는 리뷰 찾기
+            let userReview = reviews.find(review => review.user === userName);
+
+            // 해당하는 리뷰가 없거나 비밀번호가 일치하지 않으면 false 반환
+            if (!userReview || userReview.password !== password) {
+                return false;
+            }
+
+            return true;
+        }
+
 
         document.getElementById("writeBtn").addEventListener("click", function (e) {
             e.preventDefault();
